@@ -10,7 +10,7 @@ using Zenject;
 
 namespace CustomPillows
 {
-    internal class Blahaj : MonoBehaviour, IPillow
+    /*internal class Blahaj : MonoBehaviour, IPillow
     {
         private SiraLog _logger;
         private PluginConfig _config;
@@ -68,7 +68,7 @@ namespace CustomPillows
                 return _container.InstantiateComponent<Blahaj>(go);
             }
         }
-    }
+    }*/
 
     internal class Pillow : MonoBehaviour, IPillow
     {

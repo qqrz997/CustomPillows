@@ -11,29 +11,32 @@ using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
+using SystemRandom = System.Random; 
 
 namespace CustomPillows
 {
     internal class PillowSpawner : IDisposable
     {
+        private static readonly SystemRandom _random = new SystemRandom();
+
         private IList<Texture2D> _texturePool;
         private Constellation _constellation;
 
         private readonly SiraLog _logger;
         private readonly PluginConfig _config;
         private readonly Pillow.Factory _bodyPillowFactory;
-        private readonly Blahaj.Factory _blahajFactory;
+        //private readonly Blahaj.Factory _blahajFactory;
 
         private readonly IList<IPillow> _spawnedPillows;
 
         public bool CanSpawn { get; set; }
 
-        private PillowSpawner(SiraLog logger, PluginConfig config, Pillow.Factory bodyPillowFactory, Blahaj.Factory blahajFactory)
+        private PillowSpawner(SiraLog logger, PluginConfig config, Pillow.Factory bodyPillowFactory)
         {
             _logger = logger;
             _config = config;
             _bodyPillowFactory = bodyPillowFactory;
-            _blahajFactory = blahajFactory;
+            //_blahajFactory = blahajFactory;
 
             _spawnedPillows = new List<IPillow>();
 
@@ -70,7 +73,8 @@ namespace CustomPillows
                 {
                     TransformSetter = new AdvancedTransformSetter(collection.TransformData),
                     Texture = shuffledList[i],
-                    Shape = shuffledList[i] == null ? PillowParams.PillowShape.Blahaj : PillowParams.PillowShape.Body
+                    //Shape = shuffledList[i] == null ? PillowParams.PillowShape.Blahaj : PillowParams.PillowShape.Body
+                    Shape = PillowParams.PillowShape.Body
                 };
 
                 Spawn(options);
@@ -82,13 +86,13 @@ namespace CustomPillows
             var newArr = new List<Texture2D>(length);
             for (int i = 0; i < length; i++)
             {
-                if (_config.MixInBlahaj && i < (length * _config.BlahajThreshold))
-                    newArr.Add(null);
-                else 
+                //if (_config.MixInBlahaj && i < (length * _config.BlahajThreshold))
+                //    newArr.Add(null);
+                //else 
                     newArr.Add(input[i % input.Count]);
             }
 
-            newArr.ShuffleInPlace();
+            newArr.ShuffleInPlace(_random);
             return newArr;
         }
 
@@ -105,15 +109,15 @@ namespace CustomPillows
                     Scale = Vector3.one
                 });
 
-                Texture2D tex = null;
-                if (!_config.MixInBlahaj || i > (spawnParams.Amount * _config.BlahajThreshold))
-                    tex = spawnParams.Textures[Random.Range(0, spawnParams.Textures.Count)];
-                
+                //if (!_config.MixInBlahaj || i > (spawnParams.Amount * _config.BlahajThreshold))
+                Texture2D tex = spawnParams.Textures[Random.Range(0, spawnParams.Textures.Count)];
+
                 var options = new PillowParams
                 {
                     TransformSetter = tSetter,
                     Texture = tex,
-                    Shape = tex == null ? PillowParams.PillowShape.Blahaj : PillowParams.PillowShape.Body
+                    //Shape = tex == null ? PillowParams.PillowShape.Blahaj : PillowParams.PillowShape.Body
+                    Shape = PillowParams.PillowShape.Body
                 };
 
                 Spawn(options);
@@ -131,9 +135,9 @@ namespace CustomPillows
                 case PillowParams.PillowShape.Body:
                     pillow = _bodyPillowFactory.Create();
                     break;
-                case PillowParams.PillowShape.Blahaj: 
-                    pillow = _blahajFactory.Create();
-                    break;
+                //case PillowParams.PillowShape.Blahaj: 
+                //    pillow = _blahajFactory.Create();
+                //    break;
             }
 
             pillow.Init(spawnParams);

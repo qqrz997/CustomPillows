@@ -26,10 +26,7 @@ namespace CustomPillows
 
         public void Dispose()
         {
-            if (MenuButtons.IsSingletonAvailable)
-            {
-                MenuButtons.instance.UnregisterButton(_menuButton);
-            }
+            MenuButtons.instance.UnregisterButton(_menuButton);
         }
 
         private void ShowPillowFlowCoordinator()
