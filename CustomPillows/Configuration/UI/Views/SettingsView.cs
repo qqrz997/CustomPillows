@@ -22,7 +22,7 @@ namespace CustomPillows.Configuration.UI.Views
         private PluginConfig _config;
         private ConstellationLoader _constellationLoader;
 
-        [UIValue("Constellations")] private IList<object> _constellationList;
+        [UIValue("Constellations")] private IList<object> _constellationList = new List<object>();
         [UIValue("SelectedConstellation")]
         private string _selectedConstellation
         {
@@ -30,7 +30,9 @@ namespace CustomPillows.Configuration.UI.Views
             set => _config.SelectedConstellation = value;
         }
 
-        [UIValue("MixInBlahaj")]
+        // Blåhaj is disabled until a unity 2021 compatible blåhaj is available, sorry blåhaj );
+
+        /*[UIValue("MixInBlahaj")]
         private bool _mixInBlahaj
         {
             get => _config.MixInBlahaj;
@@ -68,7 +70,7 @@ namespace CustomPillows.Configuration.UI.Views
                 _config.BlahajRandomColors = value;
                 OnModToggled?.Invoke(IsModEnabled);
             }
-        }
+        }*/
 
         [Inject]
         private async void Construct(SiraLog logger, PluginConfig config, ConstellationLoader constellationLoader)
