@@ -11,11 +11,14 @@ using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
+using SystemRandom = System.Random; 
 
 namespace CustomPillows
 {
     internal class PillowSpawner : IDisposable
     {
+        private static readonly SystemRandom _random = new SystemRandom();
+
         private IList<Texture2D> _texturePool;
         private Constellation _constellation;
 
@@ -88,7 +91,7 @@ namespace CustomPillows
                     newArr.Add(input[i % input.Count]);
             }
 
-            newArr.ShuffleInPlace();
+            newArr.ShuffleInPlace(_random);
             return newArr;
         }
 
