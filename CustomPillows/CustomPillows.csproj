@@ -1,37 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2F243118-3373-4FC9-B0AB-801B94CCA8E6}</ProjectGuid>
+    <TargetFramework>net472</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CustomPillows</RootNamespace>
-    <AssemblyName>CustomPillows</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
     <LocalRefsDir Condition="Exists('..\Refs')">..\Refs</LocalRefsDir>
     <BeatSaberDir>$(LocalRefsDir)</BeatSaberDir>
     <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
     <LangVersion>8.0</LangVersion>
-    <!--<PathMap>$(AppOutputBase)=X:\$(AssemblyName)\</PathMap>-->
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="$(DefineConstants.Contains('CIBuild')) OR '$(NCrunch)' == '1'">
     <DisableCopyToPlugins>True</DisableCopyToPlugins>
@@ -66,12 +40,6 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
     <Reference Include="Main">
       <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Main.dll</HintPath>
       <Private>False</Private>
@@ -158,37 +126,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\UI\Views\ImageListView.cs" />
-    <Compile Include="Configuration\UI\Views\SettingsView.cs" />
-    <Compile Include="Converters\QuaternionConverter.cs" />
-    <Compile Include="Converters\Vector3Converter.cs" />
-    <Compile Include="Exceptions\PillowPrefabLoadException.cs" />
-    <Compile Include="Helpers\CommonExtensions.cs" />
-    <Compile Include="Helpers\EmbeddedAssetUtilities.cs" />
-    <Compile Include="Installers\CustomPillowsAppInstaller.cs" />
-    <Compile Include="Installers\CustomPillowsGameInstaller.cs" />
-    <Compile Include="IPillow.cs" />
-    <Compile Include="Loaders\Initializer.cs" />
-    <Compile Include="Constellation.cs" />
-    <Compile Include="Loaders\ConstellationLoader.cs" />
-    <Compile Include="PillowGameController.cs" />
-    <Compile Include="TransformDataCollection.cs" />
-    <Compile Include="Pillow.cs" />
-    <Compile Include="PillowSpawner.cs" />
-    <Compile Include="MenuButtonManager.cs" />
-    <Compile Include="Configuration\UI\PillowFlowCoordinator.cs" />
-    <Compile Include="Loaders\PillowImageLoader.cs" />
-    <Compile Include="Loaders\PillowPrefabLoader.cs" />
-    <Compile Include="Plugin.cs" />
-    <Compile Include="Configuration\PluginConfig.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Installers\CustomPillowsMenuInstaller.cs" />
-    <Compile Include="TransformSetter\AdvancedTransformSetter.cs" />
-    <Compile Include="TransformSetter\ITransformSetter.cs" />
-    <Compile Include="TransformSetter\SimpleTransformSetter.cs" />
-    <Compile Include="TransformSetter\TransformData.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="manifest.json" />
   </ItemGroup>
   <ItemGroup>
@@ -198,8 +135,6 @@
     <EmbeddedResource Include="Configuration\UI\Views\SettingsView.bsml">
       <DependentUpon>SettingsView.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Directory.Build.props" Condition="Exists('Directory.Build.props')" />
-    <None Include="Directory.Build.targets" Condition="Exists('Directory.Build.targets')" />
     <None Include="CustomPillows.csproj.user" Condition="Exists('CustomPillows.csproj.user')" />
     <EmbeddedResource Include="Resources\pillows" />
     <EmbeddedResource Include="Resources\blahaj" />
@@ -210,7 +145,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
