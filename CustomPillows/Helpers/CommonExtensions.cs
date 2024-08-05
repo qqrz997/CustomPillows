@@ -31,7 +31,7 @@ namespace CustomPillows.Helpers
 
         public static async Task<byte[]> ReadFileDataAsync(string path)
         {
-            FileStream sourceStream = new FileStream(path,
+            using FileStream sourceStream = new FileStream(path,
                 FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true);
 
             byte[] data = new byte[sourceStream.Length];
