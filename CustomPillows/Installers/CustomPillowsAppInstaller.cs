@@ -27,7 +27,7 @@ namespace CustomPillows.Installers
             Container.BindInterfacesAndSelfTo<PillowSpawner>().AsSingle();
 
             Container.BindFactory<IPillow, Pillow.Factory>().FromFactory<Pillow.PillowFactory>();
-            //Container.BindFactory<IPillow, Blahaj.Factory>().FromFactory<Blahaj.BlahajFactory>();
+            Container.BindFactory<IPillow, Blahaj.Factory>().FromFactory<Blahaj.BlahajFactory>();
         }
     }
 }

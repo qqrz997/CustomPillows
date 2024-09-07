@@ -10,7 +10,7 @@ using Zenject;
 
 namespace CustomPillows
 {
-    /*internal class Blahaj : MonoBehaviour, IPillow
+    internal class Blahaj : MonoBehaviour, IPillow
     {
         private SiraLog _logger;
         private PluginConfig _config;
@@ -21,7 +21,7 @@ namespace CustomPillows
         private static int albedoColorId = 0;
         private static int AlbedoColorId => albedoColorId != 0 ? albedoColorId : (albedoColorId = Shader.PropertyToID("_AlbedoColor"));
 
-        private readonly Color defaultColor = Color.HSVToRGB(200.0f/360.0f, 0.8f, 0.65f).ColorWithAlpha(1.0f);
+        private readonly Color defaultColor = Color.HSVToRGB(200.0f / 360.0f, 0.8f, 0.65f).ColorWithAlpha(1.0f);
         private void Awake()
         {
             CachedTransform = transform;
@@ -35,7 +35,7 @@ namespace CustomPillows
             _logger = logger;
             _config = config;
         }
-        
+
         public void Init(PillowParams pillowParams)
         {
             if (pillowParams.Shape != PillowParams.PillowShape.Blahaj)
@@ -68,7 +68,7 @@ namespace CustomPillows
                 return _container.InstantiateComponent<Blahaj>(go);
             }
         }
-    }*/
+    }
 
     internal class Pillow : MonoBehaviour, IPillow
     {

@@ -32,14 +32,15 @@ namespace CustomPillows.Configuration.UI.Views
 
         // Blåhaj is disabled until a unity 2021 compatible blåhaj is available, sorry blåhaj );
 
-        /*[UIValue("MixInBlahaj")]
+        [UIValue("MixInBlahaj")]
         private bool _mixInBlahaj
         {
             get => _config.MixInBlahaj;
-            set {
+            set
+            {
                 _config.MixInBlahaj = value;
                 OnModToggled?.Invoke(IsModEnabled);
-                if (blahajSlider != null) 
+                if (blahajSlider != null)
                     blahajSlider.interactable = value;
                 if (blahajColorToggle != null)
                     blahajColorToggle.interactable = value;
@@ -70,7 +71,7 @@ namespace CustomPillows.Configuration.UI.Views
                 _config.BlahajRandomColors = value;
                 OnModToggled?.Invoke(IsModEnabled);
             }
-        }*/
+        }
 
         [Inject]
         private async void Construct(SiraLog logger, PluginConfig config, ConstellationLoader constellationLoader)
