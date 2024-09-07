@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
+using AssetBundleLoadingTools.Utilities;
 using CustomPillows.Helpers;
 using SiraUtil.Logging;
 using UnityEngine;
@@ -39,6 +40,9 @@ namespace CustomPillows.Loaders
             var loader = new EmbeddedAssetBundleLoader<GameObject>(resourcePath, assetName);
             var loadResult = await loader.LoadAsync();
             if (!loadResult.Success) return null;
+
+            ShaderRepair.FixShadersOnGameObject(loadResult.Asset);
+
             return loadResult.Asset;
         }
     }
