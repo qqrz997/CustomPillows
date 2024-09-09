@@ -41,9 +41,9 @@ namespace CustomPillows.Configuration.UI.Views
                 _config.MixInBlahaj = value;
                 OnModToggled?.Invoke(IsModEnabled);
                 if (blahajSlider != null)
-                    blahajSlider.interactable = value;
+                    blahajSlider.Interactable = value;
                 if (blahajColorToggle != null)
-                    blahajColorToggle.interactable = value;
+                    blahajColorToggle.Interactable = value;
             }
         }
 

@@ -136,8 +136,8 @@ namespace CustomPillows.Configuration.UI.Views
                 cells.Add(cell);
             }
 
-            list.data = cells;
-            list.tableView.ReloadData();
+            list.Data = cells;
+            list.TableView.ReloadData();
         }
     }
 }
