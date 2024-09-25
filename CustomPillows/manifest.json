@@ -3,7 +3,7 @@
   "id": "CustomPillows",
   "name": "CustomPillows",
   "author": "Toni Macaroni",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Give your menu a little spice",
   "gameVersion": "1.37.5",
   "dependsOn": {
